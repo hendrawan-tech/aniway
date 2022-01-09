@@ -1,0 +1,6 @@
+.hide__scroll {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  scrollbar-width: none;
+}
