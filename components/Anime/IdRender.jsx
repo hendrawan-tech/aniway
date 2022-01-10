@@ -21,7 +21,6 @@ const IdRender = () => {
     }
     id && fetchData();
   }, [id]);
-  console.log(data);
   return (
     <>
       <Navbar />
