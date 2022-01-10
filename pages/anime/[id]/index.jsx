@@ -1,5 +1,5 @@
 import React from "react";
-import Render from "../../../components/Anime/render";
+import Render from "../../../components/Anime/Render";
 
 const index = () => {
   return <Render />;

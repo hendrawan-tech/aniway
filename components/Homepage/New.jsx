@@ -36,9 +36,9 @@ const New = () => {
           <>
             {Array.from(Array(21), (_, i) => {
               return (
-                <di
+                <div
                   key={i}
-                  className='flex flex-col hover:scale-105 transition-all gap-2 w-full h-[18.96vw] rounded-xl bg-gray-500 bg-opacity-20 animate-pulse'></di>
+                  className='flex flex-col hover:scale-105 transition-all gap-2 w-full h-[18.96vw] rounded-xl bg-gray-500 bg-opacity-20 animate-pulse'></div>
               );
             })}
           </>

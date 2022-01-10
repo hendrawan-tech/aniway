@@ -3,9 +3,12 @@ import { fetchAnime } from "../Fetch/fetchAnime";
 
 const Genre = () => {
   const [data, setData] = useState([]);
-  useEffect(async () => {
-    let fetch = await fetchAnime.genres();
-    setData(fetch);
+  useEffect(() => {
+    async function fetchData() {
+      let fetch = await fetchAnime.genres();
+      setData(fetch);
+    }
+    fetchData();
   }, []);
   return (
     <div className='flex flex-col gap-3'>
@@ -15,7 +18,11 @@ const Genre = () => {
       </div>
       <ul className='columns-2 gap-x-2 text-gray-400 text-sm'>
         {data.map((item, i) => {
-          return <li className="" key={i}>{item.title}</li>;
+          return (
+            <li className='' key={i}>
+              {item.title}
+            </li>
+          );
         })}
       </ul>
     </div>
