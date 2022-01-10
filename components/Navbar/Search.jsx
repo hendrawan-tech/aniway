@@ -1,35 +1,35 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import SearchList from "./SearchList";
 import { fetchAnime } from "../Fetch/fetchAnime";
 
 const Search = () => {
-  const [query, setQuery] = React.useState("");
-  const [data, setData] = React.useState([]);
-  const [focus, setFocus] = React.useState("visible");
-  const input = React.useRef();
-  function clickOutside(ref) {
-    React.useEffect(() => {
-      function handleClickOutside(event) {
-        if (ref.current && !ref.current.contains(event.target)) {
-          setFocus("invisible");
-        }
+  const [query, setQuery] = useState("");
+  const [data, setData] = useState([]);
+  const [focus, setFocus] = useState("visible");
+  const input = useRef();
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (input.current && !input.current.contains(event.target)) {
+        setFocus("invisible");
       }
+    }
 
-      document.addEventListener("mousedown", handleClickOutside);
-      return () => {
-        document.removeEventListener("mousedown", handleClickOutside);
-      };
-    }, [ref]);
-  }
-  clickOutside(input);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [input]);
   const handleSearch = (e) => {
-    if (e.target.value.length < 1) return setData([]);
     setQuery(e.target.value);
+    if (e.target.value.length < 2) return setData([]);
     e.preventDefault();
   };
-  React.useEffect(async () => {
-    let fetch = await fetchAnime.search(query);
-    setData(fetch.data);
+  useEffect(() => {
+    async function fetchData() {
+      let fetch = await fetchAnime.search(query);
+      setData(fetch.data);
+    }
+    fetchData();
   }, [query]);
   return (
     <div ref={input}>

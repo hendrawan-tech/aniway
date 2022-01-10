@@ -1,16 +1,19 @@
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { AiOutlineHome } from "react-icons/ai";
 import { fetchAnime } from "../Fetch/fetchAnime";
 
 const Top = () => {
-  const [totalpage, setTotalpage] = React.useState([]);
-  const [page, setPage] = React.useState(1);
-  const [data, setData] = React.useState([]);
-  React.useEffect(async () => {
-    let fetch = await fetchAnime.popular(page);
-    setData(fetch.data);
-    setTotalpage(fetch.paginations);
+  const [totalpage, setTotalpage] = useState([]);
+  const [page, setPage] = useState(1);
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    async function fetchData() {
+      let fetch = await fetchAnime.popular(page);
+      setData(fetch.data);
+      setTotalpage(fetch.paginations);
+    }
+    fetchData();
   }, [page]);
   return (
     <div className='flex flex-col gap-7 items-center'>
@@ -36,9 +39,10 @@ const Top = () => {
           className='p-2 flex justify-center items-center text-lg rounded-xl border-2 border-blue-500 hover:bg-blue-500 transition text-white cursor-pointer'>
           <AiOutlineHome />
         </li>
-        {totalpage.map((e) => {
+        {totalpage.map((e, i) => {
           return (
             <li
+              key={i}
               onClick={() => {
                 setPage(e);
               }}
