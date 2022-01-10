@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { fetchAnime } from "../Fetch/fetchAnime";
 
 const Genre = () => {
   const [data, setData] = useState([]);
-  React.useEffect(async () => {
+  useEffect(async () => {
     let fetch = await fetchAnime.genres();
     setData(fetch);
   }, []);
