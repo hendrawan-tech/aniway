@@ -1,8 +1,8 @@
 import React from "react";
-import Render from "../../../components/Anime/Render";
+import Id from "../../../components/Anime/Id";
 
 const index = () => {
-  return <Render />;
+  return <Id />;
 };
 
 export default index;
