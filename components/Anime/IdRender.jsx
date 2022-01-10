@@ -6,7 +6,7 @@ import { fetchAnime } from "../Fetch/fetchAnime";
 import Genre from "../Homepage/Genre";
 import Navbar from "../Navbar/Navbar";
 
-const Id = () => {
+const IdRender = () => {
   const [id, setId] = useState("");
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState();
@@ -92,4 +92,4 @@ const Id = () => {
   );
 };
 
-export default Id;
+export default IdRender;
