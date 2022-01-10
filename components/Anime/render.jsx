@@ -2,8 +2,8 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { AiFillStar, AiOutlineLoading } from "react-icons/ai";
 import { BiPlayCircle, BiXCircle } from "react-icons/bi";
-import Genre from "../../../components/Homepage/Genre";
-import Navbar from "../../../components/Navbar/Navbar";
+import Genre from "../Homepage/Genre";
+import Navbar from "../Navbar/Navbar";
 
 const Render = () => {
   const [id, setId] = useState();
