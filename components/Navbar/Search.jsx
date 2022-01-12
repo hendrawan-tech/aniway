@@ -34,14 +34,14 @@ const Search = () => {
     fetchData();
   }, [query]);
   return (
-    <div ref={input}>
+    <div ref={input} className='w-full md:w-[17vw]'>
       <input
         onChange={handleSearch}
         onFocus={() => setFocus("visible")}
         placeholder='Search'
-        className='py-3 px-5 border border-gray-500 text-white rounded-full bg-transparent outline-none whitespace-nowrap overflow-hidden w-[17vw]'
+        className='w-full md:w-[17vw] py-3 px-5 border border-gray-500 text-white rounded-full bg-transparent outline-none whitespace-nowrap overflow-hidden'
       />
-      <div className={`${focus} absolute`}>
+      <div className={`${focus} absolute z-10`}>
         {data && data.length > 0 && <SearchList data={data} />}
       </div>
     </div>

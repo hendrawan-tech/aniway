@@ -17,13 +17,13 @@ const Top = () => {
   }, [page]);
   return (
     <div className='flex flex-col gap-7 items-center'>
-      <div className='grid grid-cols-7 gap-x-5 gap-y-10 w-full min-h-[70vh]'>
+      <div className='grid grid-cols-2 md:grid-cols-7 gap-x-5 gap-y-10 w-full min-h-[70vh]'>
         {data ? (
           data.map((item, i) => {
             return (
               <Link key={i} href={`/anime/[id]`} as={`/anime/${item.id}`}>
                 <a className='flex flex-col hover:scale-105 transition-all gap-2'>
-                  <div className='overflow-hidden rounded-xl relative h-[17.5vw] grid'>
+                  <div className='overflow-hidden rounded-xl relative h-[70vw] md:h-[17.5vw] grid'>
                     <img className='object-cover w-full h-full' src={item.thumbnail} alt='' />
                   </div>
                   <p className='text-white text-center text-sm truncate'>{item.title}</p>
@@ -43,7 +43,7 @@ const Top = () => {
           </>
         )}
       </div>
-      <ul className='w-2/5 grid grid-cols-6 gap-2'>
+      <ul className='md:w-2/5 grid grid-cols-6 gap-2'>
         <li
           onClick={() => {
             setPage(1);

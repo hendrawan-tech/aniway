@@ -13,7 +13,6 @@ const Suggestion = () => {
     <div className='rounded-xl overflow-hidden'>
       <Swiper
         touchEventsTarget='container'
-        pagination={true}
         autoplay={{
           delay: 2500,
           disableOnInteraction: false,
@@ -23,7 +22,7 @@ const Suggestion = () => {
         spaceBetween={20}>
         {Fakedata.map((data, i) => (
           <SwiperSlide key={i}>
-            <div className='h-[25vw] rounded-xl overflow-hidden grid'>
+            <div className='h-[50vw] md:h-[25vw] rounded-xl overflow-hidden grid'>
               <span
                 className={`${Style.card} z-10 w-full h-full absolute object-cover`}></span>
               <img
@@ -32,7 +31,7 @@ const Suggestion = () => {
                 src={data.img}
               />
 
-              <p className='self-end z-20 text-white text-xl p-5'>
+              <p className='self-end text-center md:text-left md:self-end z-20 text-white text-sm md:text-xl pb-3 md:p-5'>
                 {data.name}
               </p>
             </div>

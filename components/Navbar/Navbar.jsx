@@ -6,7 +6,7 @@ import Search from "./Search";
 const Navbar = () => {
   return (
     <section id='Navbar'>
-      <nav className='flex justify-between items-center px-[5vw] py-10'>
+      <nav className='flex flex-col gap-5 md:flex-row justify-between items-center px-[5vw] pt-10 pb-3 md:py-10'>
         <div className='flex gap-10 items-center'>
           <Link href='/'>
             <a>
@@ -14,14 +14,13 @@ const Navbar = () => {
             </a>
           </Link>
 
-          <ul className='flex gap-5 text-white uppercase'>
-            <li>Upcoming</li>
-            <li>Latest</li>
-            <li>Top</li>
-          </ul>
+          <div className='hidden md:flex gap-5 text-white uppercase'>
+            <a href="#New" className="text-gray-500 hover:text-white cursor-pointer">Latest</a>
+            <a href="#Top" className="text-gray-500 hover:text-white cursor-pointer">Top</a>
+          </div>
         </div>
 
-        <div className='flex items-center gap-2'>
+        <div className='flex items-center gap-2 w-full md:w-auto'>
           <Search />
           {/* <button className='rounded-full bg-blue-500 p-4 text-lg outline-none text-white'>
             <BiSearch />

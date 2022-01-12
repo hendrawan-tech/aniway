@@ -26,7 +26,7 @@ const IdRender = () => {
     <>
       <Navbar />
       <div className='px-[5vw] py-5 grid grid-cols-5 gap-10'>
-        <div className='col-span-4'>
+        <div className='col-span-full md:col-span-4'>
           {data ? (
             <>
               {data.map((item, i) => {
@@ -34,9 +34,9 @@ const IdRender = () => {
                   <div className='flex flex-col gap-5' key={i}>
                     {item.episodeCount ? <Vid item={item} /> : null}
                     <h1 className='text-white font-bold text-4xl'>{item.title}</h1>
-                    <div className='grid grid-cols-4 gap-10'>
+                    <div className='grid col-span-2 md:grid-cols-4 gap-5 md:gap-10'>
                       <InfoLeft item={item} />
-                      <div className='col-span-3'>
+                      <div className='md:col-span-3'>
                         <div className='flex gap-10'></div>
                         <div>
                           <h1 className='text-white text-lg font-semibold'>Summary</h1>
@@ -57,7 +57,9 @@ const IdRender = () => {
             </div>
           )}
         </div>
-        <Genre />
+        <div className='hidden md:block'>
+          <Genre />
+        </div>
       </div>
     </>
   );
@@ -65,26 +67,30 @@ const IdRender = () => {
 
 const InfoLeft = ({ item }) => {
   return (
-    <div className='flex flex-col gap-5'>
-      <img src={item.thumbnail} className='w-full object-cover rounded-2xl h-[26vw]' alt='' />
+    <div className='grid grid-cols-2 md:grid-cols-none gap-5'>
+      <img
+        src={item.thumbnail}
+        className='w-full object-cover rounded-2xl h-[70vw] md:h-[26vw] col-span-1'
+        alt=''
+      />
       <div className='grid place-items-start gap-2'>
-        <div className='flex gap-2'>
+        <div className='flex flex-col md:flex-row md:gap-2'>
           <h1 className='text-white font-semibold whitespace-nowrap'>Type :</h1>
           <p className='text-gray-500'>{item.type ? item.type : "N/A"}</p>
         </div>
-        <div className='flex gap-2'>
+        <div className='flex flex-col md:flex-row md:gap-2'>
           <h1 className='text-white font-semibold whitespace-nowrap'>Released : </h1>
           <p className='text-gray-500'>{item.released ? item.released : "N/A"}</p>
         </div>
-        <div className='flex gap-2'>
+        <div className='flex flex-col md:flex-row md:gap-2'>
           <h1 className='text-white font-semibold whitespace-nowrap'>Status :</h1>
           <p className='text-gray-500'>{item.status ? item.status : "N/A"}</p>
         </div>
-        <div className='flex gap-2'>
+        <div className='flex flex-col md:flex-row md:gap-2'>
           <h1 className='text-white font-semibold whitespace-nowrap'>Episodes :</h1>
           <p className='text-gray-500'>{item.episodeCount ? item.episodeCount : "N/A"}</p>
         </div>
-        <div className='flex gap-2'>
+        <div className='flex flex-col md:flex-row md:gap-2'>
           <h1 className='text-white font-semibold whitespace-nowrap'>Genres :</h1>
           <p className='text-gray-500 flex flex-col'>
             {item.genres.map((e) => e.title) ? item.genres.map((e) => e.title).join(", ") : "N/A"}
@@ -121,16 +127,28 @@ const Episodes = ({ item, id }) => {
     <div className='flex flex-col'>
       <div className='flex justify-between items-center'>
         <h1 className='text-white text-lg font-semibold py-2'>Episodes</h1>
-        <input
-          className={`${Style.hide__arrow} text-sm bg-transparent outline-none whitespace-nowrap text-white overflow-hidden w-[10%]`}
-          type='number'
-          min='1'
-          max={item.episodeCount}
-          placeholder='Jump to'
-          onInput={(e) => {
-            setScrollid(e.target.value);
-          }}
-        />
+        <div className='min-w-[20%] flex justify-end gap-3 text-sm '>
+          <a
+            className='text-gray-500 hover:text-white cursor-pointer'
+            onClick={() => setScrollid("1")}>
+            First
+          </a>
+          <a
+            className='text-gray-500 hover:text-white cursor-pointer'
+            onClick={() => setScrollid(item.episodeCount)}>
+            Last
+          </a>
+          <input
+            className={`${Style.hide__arrow} bg-transparent outline-none whitespace-nowrap text-white overflow-hidden`}
+            type='number'
+            min='1'
+            max={item.episodeCount}
+            placeholder='Jump to'
+            onInput={(e) => {
+              setScrollid(e.target.value);
+            }}
+          />
+        </div>
       </div>
       <div className='grid gap-3 overflow-hidden h-[25rem]'>
         <div id='scroll-container' className={`overflow-auto ${Style.hide__scroll}`}>
@@ -156,8 +174,6 @@ const Episodes = ({ item, id }) => {
 const Vid = ({ item }) => {
   const [id, setId] = useState();
   const [data, setData] = useState([]);
-  const [vid, setVid] = useState(null);
-  const [loading, setLoading] = useState();
   const episode = window.location.search.split("?ep=").join("");
   useEffect(() => {
     setId(item.id + "-episode-" + (!episode == "" ? episode : "1"));
@@ -172,7 +188,7 @@ const Vid = ({ item }) => {
   }, [id]);
   const trying = data.map((e) => e.videoId);
   return (
-    <div className='grid aspect-video rounded-xl overflow-hidden'>
+    <div className='grid h-[58vw] md:h-auto md:aspect-video rounded-xl overflow-hidden'>
       <iframe
         allowFullScreen={true}
         frameBorder='0'
