@@ -190,7 +190,7 @@ const Vid = ({ item }) => {
   return (
     <div className='grid'>
       <iframe
-        className='aspect-video rounded-xl overflow-hidden '
+        className='aspect-[16/10.7] sm:aspect-video rounded-xl overflow-hidden '
         allowFullScreen={true}
         frameBorder='0'
         width='100%'
