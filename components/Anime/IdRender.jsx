@@ -139,7 +139,7 @@ const Episodes = ({ item, id }) => {
             Last
           </a>
           <input
-            className={`${Style.hide__arrow} bg-transparent outline-none whitespace-nowrap text-white overflow-hidden`}
+            className={`${Style.hide__arrow} bg-transparent outline-none whitespace-nowrap text-white overflow-hidden min-w-[4rem]`}
             type='number'
             min='1'
             max={item.episodeCount}
