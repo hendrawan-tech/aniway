@@ -15,7 +15,6 @@ const New = () => {
     }
     fetchData();
   }, [page]);
-
   return (
     <div className='flex flex-col gap-7 items-center'>
       <div className='grid grid-cols-7 gap-x-5 gap-y-10 w-full min-h-[70vh]'>
@@ -44,7 +43,7 @@ const New = () => {
           </>
         )}
       </div>
-      <ul className='w-2/5 grid grid-flow-col gap-2'>
+      <ul className='w-2/5 grid grid-cols-6 gap-2'>
         <li
           onClick={() => {
             setPage(1);
@@ -59,7 +58,9 @@ const New = () => {
               onClick={() => {
                 setPage(e);
               }}
-              className='p-3 text-center text-sm rounded-xl border-2 border-blue-500 hover:bg-blue-500 transition text-white cursor-pointer'>
+              className={`${
+                page == e ? "bg-blue-500" : ""
+              } p-3 text-center text-sm rounded-xl border-2 border-blue-500 hover:bg-blue-500 transition text-white cursor-pointer`}>
               {e}
             </li>
           );

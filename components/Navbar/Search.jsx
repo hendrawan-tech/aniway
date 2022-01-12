@@ -20,7 +20,9 @@ const Search = () => {
     };
   }, [input]);
   const handleSearch = (e) => {
-    setQuery(e.target.value);
+    setTimeout(() => {
+      setQuery(e.target.value);
+    }, 500);
     if (e.target.value.length < 2) return setData([]);
     e.preventDefault();
   };

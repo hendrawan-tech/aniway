@@ -1,0 +1,20 @@
+.hide__scroll {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+.hide__arrow {
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  text-align: right;
+  &::placeholder {
+    @apply text-gray-500;
+  }
+  & input[type="number"] {
+    -moz-appearance: textfield;
+  }
+}
