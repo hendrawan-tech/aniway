@@ -188,16 +188,14 @@ const Vid = ({ item }) => {
   }, [id]);
   const trying = data.map((e) => e.videoId);
   return (
-    <div className='grid'>
-      <iframe
-        className='aspect-[16/10.7] sm:aspect-video rounded-xl overflow-hidden '
-        allowFullScreen={true}
-        frameBorder='0'
-        width='100%'
-        height='100%'
-        scrolling='no'
-        src={`https://gogoplay.io/streaming.php?id=${trying}&title=${item.id}`}></iframe>
-    </div>
+    <iframe
+      className={`aspect-[16/11] md:aspect-video md:rounded-xl overflow-hidden`}
+      allowFullScreen={true}
+      frameBorder='0'
+      width='100%'
+      height='100%'
+      scrolling='no'
+      src={`https://gogoplay.io/streaming.php?id=${trying}&title=${item.id}`}></iframe>
   );
 };
 
