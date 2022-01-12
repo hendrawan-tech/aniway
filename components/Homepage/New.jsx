@@ -15,13 +15,22 @@ const New = () => {
     }
     fetchData();
   }, [page]);
+
   return (
     <div className='flex flex-col gap-7 items-center'>
       <div className='grid grid-cols-7 gap-x-5 gap-y-10 w-full min-h-[70vh]'>
         {data ? (
           data.map((item, i) => {
+            var l = item.id
+              .split("episode-")
+              .join("")
+              .split(/\w+$/g)
+              .join("")
+              .split(/\-$/g)
+              .join("");
+            var e = item.id.split('-').pop()
             return (
-              <Link key={i} href={`/anime/watch/[id]`} as={`/anime/watch/${item.id}`}>
+              <Link key={i} href={`/anime/${l}?ep=${e}`}>
                 <a className='flex flex-col hover:scale-105 transition-all gap-2'>
                   <div className='overflow-hidden rounded-xl relative h-[17.5vw] grid'>
                     <img className='object-cover w-full h-full' src={item.thumbnail} alt='' />

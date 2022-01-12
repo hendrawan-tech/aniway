@@ -1,14 +1,11 @@
 import Link from "next/link";
 import React, { useState, useEffect, useRef } from "react";
 import { AiFillStar, AiOutlineLoading } from "react-icons/ai";
-import axios from "axios";
-import cheerio from "cheerio";
 import { fetchAnime } from "../Fetch/fetchAnime";
 import { Element, animateScroll as scroll, scrollSpy, scroller } from "react-scroll";
 import Genre from "../Homepage/Genre";
 import Navbar from "../Navbar/Navbar";
 import Style from "./Id.module.scss";
-import getAnime from "../../utility/getAnime";
 
 const IdRender = () => {
   const [id, setId] = useState("");
@@ -29,13 +26,13 @@ const IdRender = () => {
     <>
       <Navbar />
       <div className='px-[5vw] py-5 grid grid-cols-5 gap-10'>
-        <div className='flex flex-col gap-5 col-span-4'>
+        <div className='col-span-4'>
           {data ? (
             <>
               {data.map((item, i) => {
                 return (
-                  <div key={i}>
-                    <Vid item={item} />
+                  <div className='flex flex-col gap-5' key={i}>
+                    {item.episodeCount ? <Vid item={item} /> : null}
                     <h1 className='text-white font-bold text-4xl'>{item.title}</h1>
                     <div className='grid grid-cols-4 gap-10'>
                       <InfoLeft item={item} />
@@ -157,13 +154,13 @@ const Episodes = ({ item, id }) => {
 };
 
 const Vid = ({ item }) => {
-  const [id, setId] = useState("");
+  const [id, setId] = useState();
   const [data, setData] = useState([]);
   const [vid, setVid] = useState(null);
   const [loading, setLoading] = useState();
+  const episode = window.location.search.split("?ep=").join("");
   useEffect(() => {
-    const windowloc = window.location.search;
-    setId(item.id + "-episode-" + windowloc.split("?ep=").join(""));
+    setId(item.id + "-episode-" + (!episode == "" ? episode : "1"));
     // setId(windowloc.split(`/anime/`).join(""));
   });
   useEffect(() => {
@@ -173,13 +170,18 @@ const Vid = ({ item }) => {
     }
     id && fetchData();
   }, [id]);
-  useEffect(async () => {
-    const windowloc = window.location.search.split("?ep=").join("");
-    const getAn = await getAnime(item.id, windowloc);
-    windowloc.length > 3 && setVid(getAn);
-  }, [id]);
-  console.log(vid);
-  return <div></div>;
+  const trying = data.map((e) => e.videoId);
+  return (
+    <div className='grid aspect-video rounded-xl overflow-hidden'>
+      <iframe
+        allowFullScreen={true}
+        frameBorder='0'
+        width='100%'
+        height='100%'
+        scrolling='no'
+        src={`https://gogoplay.io/streaming.php?id=${trying}&title=${item.id}`}></iframe>
+    </div>
+  );
 };
 
 export default IdRender;
