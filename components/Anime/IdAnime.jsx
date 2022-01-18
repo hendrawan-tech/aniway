@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React, { useState, useEffect, useRef } from "react";
+import ReactDom from "react-dom";
 import { AiFillStar, AiOutlineLoading } from "react-icons/ai";
 import { fetchAnime } from "../Fetch/fetchAnime";
 import { Element, animateScroll as scroll, scrollSpy, scroller } from "react-scroll";
@@ -7,10 +8,10 @@ import Genre from "../Homepage/Genre";
 import Navbar from "../Navbar/Navbar";
 import Style from "./Id.module.scss";
 
-const IdRender = () => {
+const IdAnime = () => {
   const [id, setId] = useState("");
   const [data, setData] = useState(null);
-  const [loading, setLoading] = useState();
+  const [ep, setEp] = useState("");
   useEffect(() => {
     const windowloc = window.location.pathname;
     setId(windowloc.split("/anime/").join(""));
@@ -22,6 +23,10 @@ const IdRender = () => {
     }
     id && fetchData();
   }, [id]);
+  useEffect(() => {
+    const episode = window.location.search.split("?ep=").join("");
+    setEp("Episode " + (!episode == "" ? episode : "1"));
+  });
   return (
     <>
       <Navbar />
@@ -32,8 +37,10 @@ const IdRender = () => {
               {data.map((item, i) => {
                 return (
                   <div className='flex flex-col gap-5' key={i}>
+                    <h1 className='text-white font-bold text-4xl'>
+                      {item.title} - {ep}
+                    </h1>
                     {item.episodeCount ? <Vid item={item} /> : null}
-                    <h1 className='text-white font-bold text-4xl'>{item.title}</h1>
                     <div className='grid col-span-2 md:grid-cols-4 gap-5 md:gap-10'>
                       <InfoLeft item={item} />
                       <div className='md:col-span-3'>
@@ -188,15 +195,15 @@ const Vid = ({ item }) => {
   }, [id]);
   const trying = data.map((e) => e.videoId);
   return (
-    <iframe
-      className={`aspect-[16/11] md:aspect-video md:rounded-xl overflow-hidden`}
-      allowFullScreen={true}
-      frameBorder='0'
-      width='100%'
-      height='100%'
-      scrolling='no'
-      src={`https://gogoplay.io/streaming.php?id=${trying}&title=${item.id}`}></iframe>
+    <div className='h-[260px] ssm:h-auto ssm:aspect-video rounded-xl overflow-hidden'>
+      <iframe
+        allowFullScreen={true}
+        width='100%'
+        height='100%'
+        scrolling='no'
+        src={`https://gogoplay.io/streaming.php?id=${trying}&title=${item.id}`}></iframe>
+    </div>
   );
 };
 
-export default IdRender;
+export default IdAnime;
