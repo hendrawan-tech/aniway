@@ -64,7 +64,10 @@ const IdGenre = () => {
               <ul className='md:max-w-[40%] grid grid-flow-col gap-2'>
                 <li
                   onClick={() => {
-                    setPage(1);
+                    setData();
+                    setTimeout(() => {
+                      setPage(1);
+                    }, 200);
                   }}
                   className='w-[50px] p-2 flex justify-center items-center text-lg rounded-xl border-2 border-blue-500 hover:bg-blue-500 transition text-white cursor-pointer'>
                   <AiOutlineHome />
@@ -74,7 +77,10 @@ const IdGenre = () => {
                     <li
                       key={i}
                       onClick={() => {
-                        setPage(e);
+                        setData();
+                        setTimeout(() => {
+                          setPage(e);
+                        }, 200);
                       }}
                       className={`${
                         page == e ? "bg-blue-500" : ""
