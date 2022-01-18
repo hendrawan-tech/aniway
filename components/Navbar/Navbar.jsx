@@ -14,9 +14,9 @@ const Navbar = () => {
             </a>
           </Link>
 
-          <div className='hidden md:flex gap-5 text-white uppercase'>
-            <a href="#New" className="text-gray-500 hover:text-white cursor-pointer">Latest</a>
-            <a href="#Top" className="text-gray-500 hover:text-white cursor-pointer">Top</a>
+          <div className='hidden md:flex gap-5 uppercase'>
+            <Link href="/#New"><a className="text-gray-500 hover:text-white cursor-pointer">Latest</a></Link>
+            <Link href="/#Top"><a className="text-gray-500 hover:text-white cursor-pointer">Top</a></Link>
           </div>
         </div>
 

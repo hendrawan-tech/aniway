@@ -1,2 +1,6 @@
 import { animeFetcher } from "aniwayscrap-api";
-export const fetchAnime = new animeFetcher();
+const IAnimeConfig = {
+  baseUrl: "https://www4.gogoanime.cm",
+  apiBaseUrl: "https://ajax.gogo-load.com",
+};
+export const fetchAnime = new animeFetcher(IAnimeConfig);

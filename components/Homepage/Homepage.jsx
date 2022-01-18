@@ -3,6 +3,7 @@ import Suggestion from "./Suggestion";
 import Top from "./Top";
 import New from "./New";
 import Genre from "./Genre";
+import { Element } from "react-scroll/modules";
 
 const Homepage = () => {
   return (

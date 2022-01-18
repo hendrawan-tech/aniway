@@ -21,7 +21,7 @@ const Top = () => {
         {data ? (
           data.map((item, i) => {
             return (
-              <Link key={i} href={`/anime/[id]`} as={`/anime/${item.id}`}>
+              <Link key={i} href={`/anime/${item.id}`}>
                 <a className='flex flex-col hover:scale-105 transition-all gap-2'>
                   <div className='overflow-hidden rounded-xl relative h-[70vw] md:h-[17.5vw] grid'>
                     <img className='object-cover w-full h-full' src={item.thumbnail} alt='' />

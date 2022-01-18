@@ -14,7 +14,7 @@ const IdRender = () => {
   useEffect(() => {
     const windowloc = window.location.pathname;
     setId(windowloc.split("/anime/").join(""));
-  }, []);
+  });
   useEffect(() => {
     async function fetchData() {
       let fetch = await fetchAnime.animeInfo(id);
