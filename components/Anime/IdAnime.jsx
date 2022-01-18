@@ -38,7 +38,7 @@ const IdAnime = () => {
                 return (
                   <div className='flex flex-col gap-5' key={i}>
                     <h1 className='text-white font-bold text-4xl'>
-                      {item.title} {item.episodeCount ? "-" + ep : null}
+                      {item.title} {item.episodeCount ? "- " + ep : null}
                     </h1>
                     {item.episodeCount ? <Vid item={item} /> : null}
                     <div className='grid col-span-2 md:grid-cols-4 gap-5 md:gap-10'>
