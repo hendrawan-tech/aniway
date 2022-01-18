@@ -20,7 +20,7 @@ const Genre = () => {
       <ul className='columns-2 gap-x-2 text-gray-500 text-sm'>
         {data.map((item, i) => {
           return (
-            <Link href={`/genre/${item.id}`} key={i}>
+            <Link href={`/genre/${item.id}`}  key={i}>
               <li className="cursor-pointer hover:text-white transition mb-1">{item.title}</li>
             </Link>
           );

@@ -15,6 +15,7 @@ const IdGenre = () => {
     setId(windowloc.split("/genre/").join(""));
   });
   useEffect(() => {
+    setData();
     async function fetchData() {
       let fetch = await fetchAnime.genreList(id, page);
       setData(fetch.data);
