@@ -157,7 +157,7 @@ const Episodes = ({ item, id }) => {
           />
         </div>
       </div>
-      <div className='grid gap-3 overflow-hidden h-[25rem]'>
+      <div className='grid gap-3 overflow-hidden h-[31rem]'>
         <div id='scroll-container' className={`overflow-auto ${Style.hide__scroll}`}>
           {item.episodeCount > 0 ? (
             Array.from(Array(item.episodeCount), (_, i) => (
