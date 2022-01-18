@@ -28,7 +28,7 @@ const New = () => {
               .join("")
               .split(/\-$/g)
               .join("");
-            var e = item.id.split('-').pop()
+            var e = item.id.split("-").pop();
             return (
               <Link key={i} href={`/anime/${l}?ep=${e}`}>
                 <a className='flex flex-col hover:scale-105 transition-all gap-2'>
@@ -52,12 +52,12 @@ const New = () => {
           </>
         )}
       </div>
-      <ul className='md:w-2/5 grid grid-cols-6 gap-2'>
+      <ul className='md:max-w-[40%] grid grid-flow-col gap-2'>
         <li
           onClick={() => {
             setPage(1);
           }}
-          className='p-2 flex justify-center items-center text-lg rounded-xl border-2 border-blue-500 hover:bg-blue-500 transition text-white cursor-pointer'>
+          className='w-[50px] p-2 flex justify-center items-center text-lg rounded-xl border-2 border-blue-500 hover:bg-blue-500 transition text-white cursor-pointer'>
           <AiOutlineHome />
         </li>
         {totalpage.map((e, i) => {
@@ -69,7 +69,7 @@ const New = () => {
               }}
               className={`${
                 page == e ? "bg-blue-500" : ""
-              } p-3 text-center text-sm rounded-xl border-2 border-blue-500 hover:bg-blue-500 transition text-white cursor-pointer`}>
+              } min-w-[50px] p-3 text-center text-sm rounded-xl border-2 border-blue-500 hover:bg-blue-500 transition text-white cursor-pointer`}>
               {e}
             </li>
           );
