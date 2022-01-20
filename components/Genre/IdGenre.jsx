@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
 import { AiOutlineHome } from "react-icons/ai";
 import { fetchAnime } from "../Fetch/fetchAnime";
@@ -10,10 +11,10 @@ const IdGenre = () => {
   const [page, setPage] = useState(1);
   const [id, setId] = useState();
   const [data, setData] = useState();
+  const router = useRouter()
   useEffect(() => {
-    const windowloc = window.location.pathname;
-    setId(windowloc.split("/genre/").join(""));
-  });
+    setId(router.query.id);
+  }, [router.asPath]);
   useEffect(() => {
     setData();
     async function fetchData() {

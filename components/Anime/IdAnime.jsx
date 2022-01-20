@@ -7,15 +7,16 @@ import { Element, animateScroll as scroll, scrollSpy, scroller } from "react-scr
 import Genre from "../Homepage/Genre";
 import Navbar from "../Navbar/Navbar";
 import Style from "./Id.module.scss";
+import { useRouter } from "next/router";
 
 const IdAnime = () => {
   const [id, setId] = useState("");
   const [data, setData] = useState(null);
   const [ep, setEp] = useState("");
+  const router = useRouter();
   useEffect(() => {
-    const windowloc = window.location.pathname;
-    setId(windowloc.split("/anime/").join(""));
-  });
+    setId(router.query.id);
+  }, [router.asPath]);
   useEffect(() => {
     async function fetchData() {
       let fetch = await fetchAnime.animeInfo(id);
@@ -24,9 +25,9 @@ const IdAnime = () => {
     id && fetchData();
   }, [id]);
   useEffect(() => {
-    const episode = window.location.search.split("?ep=").join("");
+    const episode = router.query.ep;
     setEp("Episode " + (!episode == "" ? episode : "1"));
-  });
+  }, [router.asPath]);
   return (
     <>
       <Navbar />
@@ -181,11 +182,12 @@ const Episodes = ({ item, id }) => {
 const Vid = ({ item }) => {
   const [id, setId] = useState();
   const [data, setData] = useState([]);
-  const episode = window.location.search.split("?ep=").join("");
+  const router = useRouter();
   useEffect(() => {
+    const episode = router.query.ep;
     setId(item.id + "-episode-" + (!episode == "" ? episode : "1"));
     // setId(windowloc.split(`/anime/`).join(""));
-  });
+  }, [router.asPath]);
   useEffect(() => {
     async function fetchData() {
       let fetch = await fetchAnime.animeEpisodeInfo(id);
