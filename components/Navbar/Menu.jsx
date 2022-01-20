@@ -14,7 +14,7 @@ const Menu = ({ open, openstate }) => {
           <Link href='/#Top'>Top Anime</Link>
           <Link href='/#Genre'>Genre&#39;s</Link>
         </div>
-        <p className="text-center text-sm text-gray-500 absolute bottom-0 w-full mb-5">Touch anywhere to close</p>
+        <p className="text-center text-sm text-gray-500 absolute bottom-0 w-full mb-24">Touch anywhere to close</p>
       </div>
     </section>
   );
