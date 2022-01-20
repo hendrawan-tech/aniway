@@ -18,7 +18,7 @@ const SEO = () => {
         property='og:description'
         content='Aniway is anime streaming website, so you can watch or download anime here'
       />
-      <meta property='og:image' content='\Images\metatag.jpg' />
+      <meta property='og:image' content='\Images\metatag.png' />
 
       <meta property='twitter:card' content='summary_large_image' />
       <meta property='twitter:url' content='https://aniway.vercel.app/' />
@@ -27,7 +27,7 @@ const SEO = () => {
         property='twitter:description'
         content='Aniway is anime streaming website, so you can watch or download anime here'
       />
-      <meta property='twitter:image' content='\Images\metatag.jpg' />
+      <meta property='twitter:image' content='\Images\metatag.png' />
       <link rel='apple-touch-icon' sizes='57x57' href='\Icon\apple-icon-57x57.png' />
       <link rel='apple-touch-icon' sizes='60x60' href='\Icon\apple-icon-60x60.png' />
       <link rel='apple-touch-icon' sizes='72x72' href='\Icon\apple-icon-72x72.png' />
