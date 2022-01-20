@@ -37,7 +37,7 @@ const Top = () => {
               return (
                 <div
                   key={i}
-                  className='flex flex-col hover:scale-105 transition-all gap-2 w-full h-[72vw] md:h-[18.96vw] rounded-xl bg-gray-500 bg-opacity-20 animate-pulse'></div>
+                  className='flex flex-col hover:scale-105 transition-all gap-2 w-full h-[60vw] md:h-[18.96vw] rounded-xl bg-gray-500 bg-opacity-20 animate-pulse'></div>
               );
             })}
           </>

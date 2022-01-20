@@ -2,6 +2,7 @@ import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { AiOutlineHome } from "react-icons/ai";
 import { fetchAnime } from "../Fetch/fetchAnime";
+import Style from "./Suggestion.module.scss";
 
 const New = () => {
   const [totalpage, setTotalpage] = useState([]);
@@ -15,7 +16,7 @@ const New = () => {
     }
     fetchData();
   }, [page]);
-
+  console.log(data);
   return (
     <div className='flex flex-col gap-7 items-center'>
       <div className='grid grid-cols-2 md:grid-cols-7 gap-x-5 gap-y-10 w-full min-h-[70vh]'>
@@ -33,6 +34,10 @@ const New = () => {
               <Link key={i} href={`/anime/${l}?ep=${e}`}>
                 <a className='flex flex-col hover:scale-105 transition-all gap-2'>
                   <div className='overflow-hidden rounded-xl relative h-[70vw] md:h-[17.5vw] grid'>
+                    <span
+                      className={`${Style.card} w-full h-full grid items-end justify-center p-2 text-sm hover:text-white transition-all text-gray-400 absolute`}>
+                      {item.episode}
+                    </span>
                     <img className='object-cover w-full h-full' src={item.thumbnail} alt='' />
                   </div>
                   <p className='text-white text-center text-sm truncate'>{item.title}</p>

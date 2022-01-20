@@ -24,10 +24,10 @@ const Suggestion = () => {
         {Fakedata.map((data, i) => (
           <SwiperSlide key={i}>
             <Link href={data.link}>
-              <div className='h-[50vw] md:h-[25vw] rounded-xl overflow-hidden grid cursor-pointer hover:scale-[1.02] transition-all'>
-                <span className={`${Style.card} z-10 w-full h-full absolute object-cover`}></span>
+              <div className='h-[50vw] md:h-[25vw] rounded-xl overflow-hidden grid cursor-pointer relative'>
+                <span className={`${Style.card} z-10 w-full h-full absolute object-cover pointer-events-none`}></span>
                 <img
-                  className='w-full h-full absolute object-cover rounded-xl overflow-hidden'
+                  className='w-full h-full absolute object-cover rounded-xl hover:scale-105 transition-all'
                   alt=''
                   src={data.img}
                 />

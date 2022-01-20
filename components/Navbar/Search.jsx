@@ -5,12 +5,12 @@ import { fetchAnime } from "../Fetch/fetchAnime";
 const Search = () => {
   const [query, setQuery] = useState("");
   const [data, setData] = useState([]);
-  const [focus, setFocus] = useState("visible");
+  const [focus, setFocus] = useState("visible opacity-100");
   const input = useRef();
   useEffect(() => {
     function handleClickOutside(event) {
       if (input.current && !input.current.contains(event.target)) {
-        setFocus("invisible");
+        setFocus("invisible opacity-0");
       }
     }
 
@@ -34,14 +34,15 @@ const Search = () => {
     fetchData();
   }, [query]);
   return (
-    <div ref={input} className='w-full md:w-[17vw]'>
+    <div ref={input} className='w-full md:w-[17vw] relative'>
       <input
         onChange={handleSearch}
         onFocus={() => setFocus("visible")}
         placeholder='Search'
-        className='w-full md:w-[17vw] py-3 px-5 border border-gray-500 text-white rounded-full bg-transparent outline-none whitespace-nowrap overflow-hidden'
+        spellCheck='false'
+        className='z-20 relative w-full md:w-[17vw] py-3 px-5 border border-gray-500 text-white rounded-full bg-[#192026] focus:bg-white focus:text-black transition-all outline-none whitespace-nowrap overflow-hidden'
       />
-      <div className={`${focus} absolute z-10`}>
+      <div className={`${focus} absolute -mt-6 z-10 transition-all`}>
         {data && data.length > 0 && <SearchList data={data} />}
       </div>
     </div>
