@@ -21,13 +21,17 @@ const Homepage = () => {
               </div>
             </div>
             <div className='flex flex-col gap-5'>
-              <h1 id="New" className='text-white font-bold text-4xl'>New release</h1>
+              <h1 id='New' className='text-white font-bold text-4xl'>
+                New release
+              </h1>
               <New />
-              <h1 id="Top" className='text-white font-bold text-4xl'>Top anime</h1>
+              <h1 id='Top' className='text-white font-bold text-4xl'>
+                Top anime
+              </h1>
               <Top />
             </div>
           </div>
-          <div className="md:block hidden">
+          <div id="Genre" className='col-span-full md:col-span-1'>
             <Genre />
           </div>
         </div>

@@ -4,8 +4,9 @@ import Style from "./Search.module.scss";
 
 const SearchList = ({ data }) => {
   return (
-    <div className='flex max-h-[42rem] w-[90vw] md:max-h-[34rem] overflow-hidden md:w-[17vw] bg-[#192026] bg-opacity-95 backdrop-blur-md border border-gray-500 rounded-b-3xl p-[0.7rem]'>
-      <div className={`overflow-scroll ${Style.hide__scroll} text-white z-0 mt-5 rounded-xl flex flex-col gap-2`}>
+    <div className='flex max-h-[42rem] w-[90vw] md:max-h-[34rem] pt-9 overflow-hidden md:w-[17vw] bg-[#192026] border border-gray-500 rounded-b-3xl p-[0.7rem]'>
+      <div
+        className={`overflow-scroll ${Style.hide__scroll} text-white z-0 rounded-xl flex flex-col gap-2`}>
         {data.map((item, i) => {
           return (
             <a href={`/anime/${item.id}`} className='flex gap-3 min-w-[87.5vw]' key={i}>
