@@ -197,7 +197,7 @@ const Vid = ({ item }) => {
   }, [id]);
   const trying = data.map((e) => e.videoId);
   return (
-    <div className='h-[260px] ssm:h-auto ssm:aspect-video rounded-xl overflow-hidden'>
+    <div className='h-[260px] ssm:h-auto ssm:aspect-video rounded-xl overflow-hidden bg-gray-500 bg-opacity-20 relative'>
       <iframe
         allowFullScreen={true}
         width='100%'
