@@ -3,7 +3,12 @@ import React, { useState, useEffect, useRef } from "react";
 import ReactDom from "react-dom";
 import { AiFillStar, AiOutlineLoading } from "react-icons/ai";
 import { fetchAnime } from "../Fetch/fetchAnime";
-import { Element, animateScroll as scroll, scrollSpy, scroller } from "react-scroll";
+import {
+  Element,
+  animateScroll as scroll,
+  scrollSpy,
+  scroller,
+} from "react-scroll";
 import Genre from "../Homepage/Genre";
 import Navbar from "../Navbar/Navbar";
 import Style from "./Id.module.scss";
@@ -47,8 +52,12 @@ const IdAnime = () => {
                       <div className='md:col-span-3'>
                         <div className='flex gap-10'></div>
                         <div>
-                          <h1 className='text-white text-lg font-semibold'>Summary</h1>
-                          <p className='text-gray-500'>{item.summary ? item.summary : "N/A"}</p>
+                          <h1 className='text-white text-lg font-semibold'>
+                            Summary
+                          </h1>
+                          <p className='text-gray-500'>
+                            {item.summary ? item.summary : "N/A"}
+                          </p>
                         </div>
                         <div>
                           <Episodes item={item} id={id} />
@@ -87,21 +96,35 @@ const InfoLeft = ({ item }) => {
           <p className='text-gray-500'>{item.type ? item.type : "N/A"}</p>
         </div>
         <div className='flex flex-col md:flex-row md:gap-2'>
-          <h1 className='text-white font-semibold whitespace-nowrap'>Released : </h1>
-          <p className='text-gray-500'>{item.released ? item.released : "N/A"}</p>
+          <h1 className='text-white font-semibold whitespace-nowrap'>
+            Released :{" "}
+          </h1>
+          <p className='text-gray-500'>
+            {item.released ? item.released : "N/A"}
+          </p>
         </div>
         <div className='flex flex-col md:flex-row md:gap-2'>
-          <h1 className='text-white font-semibold whitespace-nowrap'>Status :</h1>
+          <h1 className='text-white font-semibold whitespace-nowrap'>
+            Status :
+          </h1>
           <p className='text-gray-500'>{item.status ? item.status : "N/A"}</p>
         </div>
         <div className='flex flex-col md:flex-row md:gap-2'>
-          <h1 className='text-white font-semibold whitespace-nowrap'>Episodes :</h1>
-          <p className='text-gray-500'>{item.episodeCount ? item.episodeCount : "N/A"}</p>
+          <h1 className='text-white font-semibold whitespace-nowrap'>
+            Episodes :
+          </h1>
+          <p className='text-gray-500'>
+            {item.episodeCount ? item.episodeCount : "N/A"}
+          </p>
         </div>
         <div className='flex flex-col md:flex-row md:gap-2'>
-          <h1 className='text-white font-semibold whitespace-nowrap'>Genres :</h1>
+          <h1 className='text-white font-semibold whitespace-nowrap'>
+            Genres :
+          </h1>
           <p className='text-gray-500 flex flex-col'>
-            {item.genres.map((e) => e.title) ? item.genres.map((e) => e.title).join(", ") : "N/A"}
+            {item.genres.map((e) => e.title)
+              ? item.genres.map((e) => e.title).join(", ")
+              : "N/A"}
           </p>
         </div>
       </div>
@@ -159,7 +182,9 @@ const Episodes = ({ item, id }) => {
         </div>
       </div>
       <div className='grid gap-3 overflow-hidden h-[31rem]'>
-        <div id='scroll-container' className={`overflow-auto ${Style.hide__scroll}`}>
+        <div
+          id='scroll-container'
+          className={`overflow-auto ${Style.hide__scroll}`}>
           {item.episodeCount > 0 ? (
             Array.from(Array(item.episodeCount), (_, i) => (
               <Link key={i} href={`/anime/${id}?ep=${i + 1}`}>
@@ -203,7 +228,7 @@ const Vid = ({ item }) => {
         width='100%'
         height='100%'
         scrolling='no'
-        src={`https://gogoplay.io/streaming.php?id=${trying}&title=${item.id}`}></iframe>
+        src={`https://goload.pro/streaming.php?id=${trying}&title=${item.id}`}></iframe>
     </div>
   );
 };
